@@ -45,205 +45,71 @@ export default function Register() {
   };
 
   return (
-    <>
-      <style>{`
-        * {
-          box-sizing: border-box;
-        }
-        body, html, #root {
-          margin: 0; padding: 0; height: 100%;
-          font-family: Arial, sans-serif;
-          background-color: #f9fafb;
-          color: #2f855a;
-        }
-        .register-wrapper {
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-        }
-        .register-container {
-          background: #fff;
-          padding: 40px 48px;
-          border-radius: 12px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-          width: 100%;
-          max-width: 480px;
-          box-sizing: border-box;
-          margin: 0 10px;
-        }
-        h2 {
-          margin: 0 0 12px 0;
-          font-size: 28px;
-          font-weight: 700;
-          text-align: center;
-          color: #4CAF50;
-        }
-        form.register-form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .form-label {
-          font-weight: 600;
-          font-size: 14px;
-          color: #2f855a;
-        }
-        .form-input {
-          padding: 12px 16px;
-          border: 2px solid #4CAF50;
-          border-radius: 8px;
-          font-size: 16px;
-          transition: border-color 0.2s ease;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        .form-input:focus {
-          border-color: #388E3C;
-          outline: none;
-        }
-        .error-message {
-          color: #e53e3e;
-          font-size: 14px;
-          margin-top: -8px;
-        }
-        button.submit-btn {
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          padding: 16px;
-          font-size: 18px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-          width: 100%;
-        }
-        button.submit-btn:disabled {
-          background-color: #A5D6A7;
-          cursor: not-allowed;
-        }
-        button.submit-btn:hover:not(:disabled) {
-          background-color: #388E3C;
-        }
-        /* Responsive tweaks */
-        @media (max-width: 480px) {
-          .register-container {
-            padding: 20px 16px;
-            max-width: 100%;
-            margin: 0 8px;
-          }
-          h2 {
-            font-size: 24px;
-          }
-          .form-label {
-            font-size: 12px;
-          }
-          .form-input {
-            font-size: 14px;
-          }
-          button.submit-btn {
-            font-size: 14px;
-            padding: 12px;
-          }
-        }
-        @media(min-width: 768px) {
-          .register-container {
-            padding: 48px 40px;
-            max-width: 480px;
-          }
-          h2 {
-            font-size: 32px;
-          }
-          .form-label {
-            font-size: 14px;
-          }
-          .form-input {
-            font-size: 16px;
-          }
-          button.submit-btn {
-            font-size: 18px;
-            padding: 16px;
-          }
-        }
-        @media(min-width: 1024px) {
-          .register-wrapper {
-            background-color: #f0fff4;
-          }
-          .register-container {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            border-radius: 12px;
-          }
-        }
-      `}</style>
-
-      <div className="register-wrapper">
-        <div className="register-container">
-          <h2>Register</h2>
-          {error && <p className="error-message">{error}</p>}
-          <form onSubmit={handleRegister} className="register-form">
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">Name</label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={e => {
-              setName(e.target.value);
-              handleInputChange();
-            }}
-            className="form-input"
-            required
-          />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
-          <input
-            id="email"
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={e => {
-              setEmail(e.target.value);
-              handleInputChange();
-            }}
-            className="form-input"
-            required
-          />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">Password</label>
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={e => {
-              setPassword(e.target.value);
-              handleInputChange();
-            }}
-            className="form-input"
-            required
-          />
-            </div>
-            <button className="submit-btn" type="submit" disabled={isLoading}>
-              {isLoading ? "Registering..." : "Register"}
-            </button>
-          </form>
-          <p style={{ marginTop: "16px", textAlign: "center" }}>
-            Already have an account?{" "}
-            <Link to="/" style={{ color: "#4CAF50", fontWeight: "bold", textDecoration: "none" }}>
-              Login here
-            </Link>
-          </p>
-        </div>
+    <div className="min-h-screen flex justify-center items-center bg-gray-50 p-5">
+      <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-green-600 text-center mb-6">Register</h2>
+        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+        <form onSubmit={handleRegister} className="flex flex-col gap-5">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="name" className="font-semibold text-sm text-green-700">Name</label>
+            <input
+              id="name"
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={e => {
+                setName(e.target.value);
+                handleInputChange();
+              }}
+              required
+              className="px-4 py-3 border-2 border-green-600 rounded-lg text-base focus:outline-none focus:border-green-800 transition"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="email" className="font-semibold text-sm text-green-700">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={e => {
+                setEmail(e.target.value);
+                handleInputChange();
+              }}
+              required
+              className="px-4 py-3 border-2 border-green-600 rounded-lg text-base focus:outline-none focus:border-green-800 transition"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="password" className="font-semibold text-sm text-green-700">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => {
+                setPassword(e.target.value);
+                handleInputChange();
+              }}
+              required
+              className="px-4 py-3 border-2 border-green-600 rounded-lg text-base focus:outline-none focus:border-green-800 transition"
+            />
+          </div>
+          <button
+            className="bg-green-600 text-white py-4 text-lg rounded-lg cursor-pointer disabled:bg-green-300 disabled:cursor-not-allowed transition hover:bg-green-800"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Registering..." : "Register"}
+          </button>
+        </form>
+        <p className="mt-4 text-center text-gray-900 text-sm">
+          Already have an account?{" "}
+          <Link to="/" className="text-green-600 font-semibold hover:underline">
+            Login here
+          </Link>
+        </p>
       </div>
-    </>
+    </div>
   );
 }

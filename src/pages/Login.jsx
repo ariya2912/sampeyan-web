@@ -74,250 +74,69 @@ export default function Login() {
   };
 
   return (
-    <>
-      <style>{`
-        * {
-          box-sizing: border-box;
-        }
-        body, html, #root {
-          margin: 0; padding: 0; height: 100%;
-          font-family: Arial, sans-serif;
-          background-color: #fff;
-          color: #2f855a;
-        }
-        .login-wrapper {
-          min-height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          background-color: #f9fafb;
-        }
-        .login-container {
-          background: #fff;
-          padding: 40px 48px;
-          border-radius: 12px;
-          box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-          width: 100%;
-          max-width: 480px;
-          box-sizing: border-box;
-          margin: 0 10px;
-        }
-        h2 {
-          margin: 0 0 12px 0;
-          font-size: 28px;
-          font-weight: 700;
-          text-align: center;
-          color: #4CAF50;
-        }
-        p.subtitle {
-          margin: 0 0 24px 0;
-          text-align: center;
-          font-size: 16px;
-          color: #000000DE;
-        }
-        form.login-form {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-        }
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 6px;
-        }
-        .form-label {
-          font-weight: 600;
-          font-size: 14px;
-          color: #2f855a;
-        }
-        .form-input {
-          padding: 12px 16px;
-          border: 2px solid #4CAF50;
-          border-radius: 8px;
-          font-size: 16px;
-          transition: border-color 0.2s ease;
-          width: 100%;
-          box-sizing: border-box;
-        }
-        .form-input:focus {
-          border-color: #388E3C;
-          outline: none;
-        }
-        .error-message {
-          color: #e53e3e;
-          font-size: 14px;
-          margin-top: -8px;
-        }
-        .forgot-password {
-          text-align: right;
-        }
-        .forgot-password-btn {
-          background: none;
-          border: none;
-          color: #4CAF50;
-          font-size: 14px;
-          cursor: pointer;
-          padding: 0;
-          text-decoration: underline;
-        }
-        .forgot-password-btn:hover {
-          color: #388E3C;
-        }
-        button.submit-btn {
-          background-color: #4CAF50;
-          color: white;
-          border: none;
-          padding: 16px;
-          font-size: 18px;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-          width: 100%;
-        }
-        button.submit-btn:disabled {
-          background-color: #A5D6A7;
-          cursor: not-allowed;
-        }
-        button.submit-btn:hover:not(:disabled) {
-          background-color: #388E3C;
-        }
-        .google-signin {
-          margin-top: 40px;
-          text-align: center;
-          font-size: 14px;
-          color: #000000DE;
-        }
-        .google-button {
-          margin-top: 12px;
-          border: 1.5px solid #a0aec0;
-          border-radius: 50%;
-          background: transparent;
-          width: 44px;
-          height: 44px;
-          cursor: pointer;
-          font-size: 20px;
-          line-height: 44px;
-          color: #2d3748;
-          user-select: none;
-          transition: background-color 0.2s ease;
-        }
-        .google-button:hover {
-          background-color: #e2e8f0;
-        }
-
-        /* Responsive tweaks */
-        @media (max-width: 480px) {
-          .login-container {
-            padding: 20px 16px;
-            max-width: 100%;
-            margin: 0 8px;
-          }
-          h2 {
-            font-size: 24px;
-          }
-          p.subtitle {
-            font-size: 13px;
-          }
-          .form-label {
-            font-size: 12px;
-          }
-          .form-input {
-            font-size: 14px;
-          }
-          button.submit-btn {
-            font-size: 14px;
-            padding: 12px;
-          }
-          .google-button {
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
-            line-height: 40px;
-          }
-        }
-        @media(min-width: 768px) {
-          .login-container {
-            padding: 48px 40px;
-            max-width: 480px;
-          }
-          h2 {
-            font-size: 32px;
-          }
-          .form-label {
-            font-size: 14px;
-          }
-          .form-input {
-            font-size: 16px;
-          }
-          button.submit-btn {
-            font-size: 18px;
-            padding: 16px;
-          }
-        }
-        @media(min-width: 1024px) {
-          .login-wrapper {
-            background-color: #f0fff4;
-          }
-          .login-container {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            border-radius: 12px;
-          }
-        }
-      `}</style>
-
-      <div className="login-wrapper">
-        <div className="login-container">
-          <h2>Login here</h2>
-          <p className="subtitle">Welcome back, you've been missed!</p>
-          <form onSubmit={handleSubmit} className="login-form">
-            <div className="form-group">
-              <label htmlFor="email" className="form-label">Email</label>
-              <input
-                id="email"
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="form-input"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password" className="form-label">Password</label>
-              <input
-                id="password"
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="form-input"
-              />
-            </div>
-            {error && <p className="error-message">{error}</p>}
-            <div className="forgot-password">
-              <button type="button" onClick={handleResetPassword} className="forgot-password-btn">
-                Forgot your password?
-              </button>
-            </div>
-            <button className="submit-btn" type="submit" disabled={isLoading}>
-              {isLoading ? "Signing in..." : "Sign In"}
-            </button>
-          </form>
-          <div className="google-signin">
-            <p>
-              Don't have an account?{" "}
-              <Link to="/register" className="register-link">
-                Register here
-              </Link>
-            </p>
-            <button className="google-button" onClick={handleGoogleSignIn} title="Sign in with Google">
-              <img src="src/assets/google.png" alt="Google sign-in" style={{ width: '24px', height: '24px', verticalAlign: 'middle' }} />
+    <div className="min-h-screen flex justify-center items-center bg-gray-50 p-5">
+      <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
+        <h2 className="text-3xl font-bold text-green-600 text-center mb-3">Login here</h2>
+        <p className="text-center text-gray-900 mb-6">Welcome back, you've been missed!</p>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+          <div className="flex flex-col gap-1">
+            <label htmlFor="email" className="font-semibold text-sm text-green-700">Email</label>
+            <input
+              id="email"
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="px-4 py-3 border-2 border-green-600 rounded-lg text-base focus:outline-none focus:border-green-800 transition"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <label htmlFor="password" className="font-semibold text-sm text-green-700">Password</label>
+            <input
+              id="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="px-4 py-3 border-2 border-green-600 rounded-lg text-base focus:outline-none focus:border-green-800 transition"
+            />
+          </div>
+          {error && <p className="text-red-600 text-sm mt-[-0.5rem]">{error}</p>}
+          <div className="text-right">
+            <button
+              type="button"
+              onClick={handleResetPassword}
+              className="text-green-600 text-sm underline hover:text-green-800"
+            >
+              Forgot your password?
             </button>
           </div>
+          <button
+            className="bg-green-600 text-white py-4 text-lg rounded-lg cursor-pointer disabled:bg-green-300 disabled:cursor-not-allowed transition hover:bg-green-800"
+            type="submit"
+            disabled={isLoading}
+          >
+            {isLoading ? "Signing in..." : "Sign In"}
+          </button>
+        </form>
+        <div className="mt-10 text-center text-gray-900 text-sm">
+          <p>
+            Don't have an account?{" "}
+            <Link to="/register" className="text-green-600 font-semibold hover:underline">
+              Register here
+            </Link>
+          </p>
+          <button
+            className="mt-3 border border-gray-400 rounded-full w-11 h-11 flex justify-center items-center mx-auto cursor-pointer hover:bg-gray-200 transition"
+            onClick={handleGoogleSignIn}
+            title="Sign in with Google"
+          >
+            <img src="src/assets/google.png" alt="Google sign-in" className="w-6 h-6" />
+          </button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
